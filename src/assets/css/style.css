@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+    --cor-fundo: #E5E5E5;
+    --cor-barra-topo: #C3CFD9;
+    --cor-bara-inferior: #9EADBA; 
+    --cor-titulo-topo: #E8833A;
+    --cor-titulo-inferior: #293845;
+    --cor-botao-sessao: #E8833A;
+    --cor-botao-texto: #FFFFFF;
+    --cor-assento-disponivel: #C3CFD9;
+    --cor-assento-disponivel-borda:#7B8B99;
+    --cor-assento-selecionado: #8DD7CF;
+    --cor-assento-selecionado-borda: #1AAE9E;
+    --cor-assento-indisponivel: #FBE192;
+    --cor-assento-indisponivel-borda: #F7C52B;
+
+
+
+
+
+}
