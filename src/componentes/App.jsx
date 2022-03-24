@@ -1,10 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Navbar from "./../Navbar";
-import Inicial from "./../Inicial";
-import Filme from "../Filme";
-import Sessao from "../Sessao";
-import Sucesso from "../Sucesso";
+import './../assets/css/reset.css'
+import './../assets/css/style.css'
+
+import Navbar from "./Navbar";
+import Inicial from "./Inicial";
+import Filme from "./Filme";
+import Sessao from "./Sessao";
+import Sucesso from "./Sucesso";
 
 function App() {
   return (

@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    --fonte: 'Roboto', sans-serif;
     --cor-fundo: #E5E5E5;
     --cor-barra-topo: #C3CFD9;
     --cor-bara-inferior: #9EADBA; 
@@ -14,8 +15,19 @@
     --cor-assento-indisponivel: #FBE192;
     --cor-assento-indisponivel-borda: #F7C52B;
 
+}
 
+header{
+    height: 67px;
+    width: 100%;
+    background-color: var(--cor-barra-topo);
+    font-size: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-
-
+header h1{
+    color: var(--cor-titulo-topo);
+    font-family: var(--fonte);
 }
