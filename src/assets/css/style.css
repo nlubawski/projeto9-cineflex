@@ -14,7 +14,6 @@
     --cor-assento-selecionado-borda: #1AAE9E;
     --cor-assento-indisponivel: #FBE192;
     --cor-assento-indisponivel-borda: #F7C52B;
-
 }
 
 header{
@@ -30,4 +29,41 @@ header{
 header h1{
     color: var(--cor-titulo-topo);
     font-family: var(--fonte);
+}
+
+.filmes__titulo{
+    height: 110px;
+    width: 100%;
+    background-color: var(--cor-fundo);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filmes__titulo p{
+    font-family: var(--fonte);
+    font-weight: 400;
+    font-size: 24px;
+    color: var(--cor-titulo-inferior);    
+}
+
+.filmes__lista{
+    height: calc(100vh - 110px - 67px);
+    width: 100%;
+    background-color: var(--cor-fundo);
+}
+
+.filmes__lista__itens{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 38px;
+}
+
+
+.filmes__lista__itens img {
+    width: 129px;
+    height: 193px;
+    margin-bottom: 30px;
+    margin-right: 46px;
 }

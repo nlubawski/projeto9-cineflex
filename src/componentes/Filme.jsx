@@ -1,7 +1,5 @@
-function Filme(){
-    return (
-        <h1>Filme</h1>
-    )
+function Filme() {
+  
 }
 
-export default Filme
+export default Filme;
