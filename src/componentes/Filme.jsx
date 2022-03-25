@@ -1,4 +1,49 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+
 function Filme() {
+  const { idFilme } = useParams();
+  const [filme, setFilme] = useState({});
+
+  useEffect(() => {
+    const promessa = axios.get(
+      `https://mock-api.driven.com.br/api/v5/cineflex/movies/${idFilme}/showtimes`
+    );
+    promessa.then((resposta) => {
+      const { data } = resposta;
+      setFilme(data);
+    });
+  }, []);
+
+  const { title, overview, posterURL, days } = filme;
+
+   return (
+      <>
+        <main className="filmes">
+          <section className="filmes__titulo">
+            <p>Selecione o horário</p>
+          </section>
+          <section className="filmes__sessoes">
+          
+          {//porque precisei validar assim, if é zoado e days nao consigo manipular sem condicional
+          //days !== undefined ? days.map(dia => console.log(dia)) : <></>
+          days !== undefined ? days.map(dia => 
+            { return (
+              <>
+                <p className="filmes__sessoes__texto">{dia.weekday} - {dia.date}</p>
+                <div className="filmes__sessoes-botoes">{dia.showtimes.map(hora => <button>{hora.name}</button>)}</div> 
+              </>)
+            }
+          ) : <></> }
+          </section>
+        </main>
+        <footer>
+          <img src={posterURL} alt={title} />
+          <p>{title}</p>
+        </footer>
+      </>
+    );
   
 }
 

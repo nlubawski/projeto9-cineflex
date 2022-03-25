@@ -24,6 +24,8 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
+    position: fixed;
+    top: 0;
 }
 
 header h1{
@@ -66,4 +68,63 @@ header h1{
     height: 193px;
     margin-bottom: 30px;
     margin-right: 46px;
+}
+
+.filmes__sessoes{
+    background-color: var(--cor-fundo);
+    height: 100vh;
+}
+
+.filmes__sessoes__texto{
+    margin-left: 23px;
+}
+
+.filmes__sessoes-botoes{
+    margin-left: 23px;
+    margin-top: 23px;
+    margin-bottom: 23px;
+}
+
+.filmes__sessoes button{
+    color: var(--cor-botao-texto);
+    background-color: var(--cor-botao-sessao);
+    width: 83px;
+    height: 43px;
+    border-radius: 3px;
+    margin-right: 10px;
+    border: 1px var(--cor-botao-sessao);
+    font-family: var(--fonte);
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.filmes__sessoes p{
+    font-size: 20px;
+    font-family: var(--fonte);
+    font-weight: 400;
+    color: var(--cor-titulo-inferior)
+}
+
+footer{
+    height: 117px;
+    width: 100%;
+    background-color: var(--cor-bara-inferior);
+    display: flex;
+    align-items: center;
+    padding-left: 14px;
+    position: fixed;
+    bottom: 0;
+}
+
+footer img{
+    width: 48px;
+    height: 72px;
+}
+
+footer p{
+    margin-left: 14px;
+    color: var(--cor-titulo-inferior);
+    font-family: var(--fonte);
+    font-weight: 400;
+    font-size: 26px;
 }

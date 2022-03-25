@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import './../assets/css/reset.css'
 import './../assets/css/style.css'
@@ -15,7 +16,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Inicial />} />
-        <Route path="/filme" element={<Filme />} />
+        <Route path="/filme/:idFilme" element={<Filme />} />
         <Route path="/sessao" element={<Sessao />} />
         <Route path="/sucesso" element={<Sucesso />} />
       </Routes>
