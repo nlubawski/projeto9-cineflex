@@ -33,7 +33,7 @@ header h1{
     font-family: var(--fonte);
 }
 
-.filmes__titulo{
+.filmes__titulo, .sessao__titulo{
     height: 110px;
     width: 100%;
     background-color: var(--cor-fundo);
@@ -43,20 +43,20 @@ header h1{
     margin-top: 67px;  
 }
 
-.filmes__titulo p{
+.filmes__titulo p, .sessao__titulo p{
     font-family: var(--fonte);
     font-weight: 400;
     font-size: 24px;
     color: var(--cor-titulo-inferior);    
 }
 
-.filmes__lista{
+.filmes__lista, .sessao__lista{
     height: calc(100vh - 110px - 67px);
     width: 100%;
     background-color: var(--cor-fundo);
 }
 
-.filmes__lista__itens{
+.filmes__lista__itens, .sessao__lista__itens{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -64,7 +64,7 @@ header h1{
 }
 
 
-.filmes__lista__itens img {
+.filmes__lista__itens img, .sessao__lista__itens img {
     width: 129px;
     height: 193px;
     margin-bottom: 30px;
