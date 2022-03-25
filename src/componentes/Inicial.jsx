@@ -26,7 +26,7 @@ function Inicial() {
       <section className="filmes__lista">
         <ul className="filmes__lista__itens">
           {filmes.map((filme) => (
-            <Link to="./filme/" key={filme.id}>
+            <Link to={`/filme/${filme.id}`} key={filme.id}>
               <li >
                 <img src={filme.posterURL} alt={filme.title} />
               </li>
