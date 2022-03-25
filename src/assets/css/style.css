@@ -33,7 +33,7 @@ header h1{
     font-family: var(--fonte);
 }
 
-.filmes__titulo, .sessao__titulo{
+.filmes__titulo{
     height: 110px;
     width: 100%;
     background-color: var(--cor-fundo);
@@ -129,3 +129,75 @@ footer p{
     font-weight: 400;
     font-size: 26px;
 }
+
+.sessao__assentos{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-left: 31px;
+    padding-right: 31px;
+    background-color: var(--cor-fundo);
+}
+
+.sessao__assentos__unidade{
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 14px;
+    margin-bottom: 20px;
+}
+
+.sessao__assentos p{
+font-family: var(--fonte);
+font-weight: 400;
+font-size: 11px;
+color: #000000;
+}
+
+.sessao__legenda, .sessao__comprador, .sessao__cpf, .sessao__botao{
+    padding-left: 45px;
+    background-color: var(--cor-fundo);
+}
+
+.sessao__comprador, .sessao__cpf{
+    font-family: var(--fonte);
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--cor-titulo-inferior);
+}
+
+.sessao__comprador input, .sessao__cpf input{
+    width: 327px;
+    height: 51px;
+}
+
+.sessao__botao{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sessao__botao button{
+    width: 225px;
+    height: 42px;
+    background-color: var(--cor-botao-sessao);
+    margin-top: 57px;
+}
+
+.sessao__titulo{
+    height: 80px;
+    width: 100%;
+    background-color: var(--cor-fundo);
+    display: flex;
+    justify-content: center;
+    margin-top: 67px; 
+}
+
+.sessao__titulo p{
+    margin-top: 43px; 
+}
+
