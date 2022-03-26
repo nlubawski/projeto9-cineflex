@@ -6,6 +6,18 @@ function Sessao() {
   const params = useParams();
   const [sessao, setSessao] = useState([]);
 
+  const [comprador, setComprador] = useState("")
+
+  const [cpf, setCpf] = useState("")
+
+  function reservar(){
+    console.log("comprador: ", comprador)
+    console.log("cpf: ", cpf)
+    console.log("assentos selecionados ", selecionados)
+
+  }
+
+
   useEffect(() => {
     const requisicao = axios.get(
       `https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${params.idSessao}/seats`
@@ -43,13 +55,16 @@ function Sessao() {
         <section className="sessao__assentos">
           {sessao.movie !== undefined ? (
             <>
+              
               {sessao.seats.map((num) => {
+
                 return num.isAvailable ? (
                   <div onClick={() => {
-                    
+                    //css = `sessao__assentos__unidade${(selecionados.findIndex(num => `${num}` === `${num.name}`) !== -1) ? "-selecionada" : ""}`
+                    selecionados.findIndex(num => console.log(`${num}` === num.name) !== -1)   
                     selecao(num.name)
                   }
-                  } className={`sessao__assentos__unidade${(selecionados.findIndex(num => `${num}` === num.name) !== -1) ? "__selecionado" : ""}`}>
+                  } className={"sessao__assentos__unidade"}>
                     <p>{num.name}</p>
                   </div>
                 ) : (
@@ -65,17 +80,19 @@ function Sessao() {
         </section>
         <section className="sessao__legenda">legendas aqui</section>
         <section>
+          <form action="">
           <div className="sessao__comprador">
             <p>Nome do comprador:</p>
-            <input type="text" />
+            <input onChange={(event) => setComprador(event.target.value)} value={comprador} required type="text" />
           </div>
           <div className="sessao__cpf">
             <p>CPF do comprador:</p>
-            <input type="text" />
+            <input onChange={(event) => setCpf(event.target.value)} value={cpf} required type="text" />
           </div>
           <div className="sessao__botao">
-            <button>Reservar Acentos</button>
+            <button onClick={() => reservar()}>Reservar Acentos</button>
           </div>
+          </form>
         </section>
       </main>
       <footer>
