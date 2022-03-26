@@ -17,6 +17,23 @@ function Sessao() {
     });
   }, []);
 
+  const [selecionados, setSelecionados] = useState([])
+
+  function selecao(numero){
+  
+    const achouIndice = selecionados.findIndex(num => num === numero.toString())
+
+    if (achouIndice !== -1){
+      const auxiliar = [...selecionados]
+      auxiliar.splice(achouIndice,1)
+      setSelecionados(auxiliar)
+    }else{
+      setSelecionados([...selecionados, numero])
+    }          
+  }
+
+  console.log("selecionadaos ", selecionados) 
+
   return (
     <>
       <main className="sessao">
@@ -27,8 +44,16 @@ function Sessao() {
           {sessao.movie !== undefined ? (
             <>
               {sessao.seats.map((num) => {
-                return (
-                  <div className="sessao__assentos__unidade">
+                return num.isAvailable ? (
+                  <div onClick={() => {
+                    
+                    selecao(num.name)
+                  }
+                  } className={`sessao__assentos__unidade${(selecionados.findIndex(num => `${num}` === num.name) !== -1) ? "__selecionado" : ""}`}>
+                    <p>{num.name}</p>
+                  </div>
+                ) : (
+                  <div onClick={() => alert("Esse assento não está disponível")} className="sessao__assentos__unidade-ocupada">
                     <p>{num.name}</p>
                   </div>
                 );
@@ -49,15 +74,13 @@ function Sessao() {
             <input type="text" />
           </div>
           <div className="sessao__botao">
-              <button>Reservar Acentos</button>
+            <button>Reservar Acentos</button>
           </div>
-          
         </section>
       </main>
       <footer>
         {sessao.movie !== undefined ? (
           <>
-            {console.log(sessao.seats)}
             <img src={sessao.movie.posterURL} alt={sessao.movie.title} />
             <p>{sessao.movie.title}</p>
           </>
@@ -66,6 +89,7 @@ function Sessao() {
         )}
       </footer>
     </>
+    
   );
 }
 
