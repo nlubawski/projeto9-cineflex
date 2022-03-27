@@ -4,19 +4,29 @@ import { Link, useParams } from "react-router-dom";
 
 function Sessao() {
   const params = useParams();
+  console.log("parametros, ", params)
   const [sessao, setSessao] = useState([]);
 
   const [comprador, setComprador] = useState("")
-
   const [cpf, setCpf] = useState("")
+  
+  function reservar(event){
 
-  function reservar(){
+    event.preventDefault();
     console.log("comprador: ", comprador)
     console.log("cpf: ", cpf)
     console.log("assentos selecionados ", selecionados)
+    const ids = selecionados.map(item => item*1)
+    console.log('ids ', ids ) 
+    const promessa = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many", {
+        ids: [...ids],
+        name: comprador,
+        cpf: cpf, 
+        })
+    promessa.then(resposta => console.log(resposta))
+    promessa.catch(erro => console.log(erro))
 
   }
-
 
   useEffect(() => {
     const requisicao = axios.get(
@@ -78,19 +88,32 @@ function Sessao() {
             <></>
           )}
         </section>
-        <section className="sessao__legenda">legendas aqui</section>
-        <section>
-          <form action="">
+        <section className="sessao__legenda">
+          <div className="sessao__legenda__caixa">
+            <div className="sessao__legenda__selecionado"></div>
+            <p>Selecionado</p>
+          </div>
+          <div className="sessao__legenda__caixa">
+            <div className="sessao__legenda__disponivel"></div>
+            <p>Disponível</p>
+          </div>
+          <div className="sessao__legenda__caixa">
+            <div className="sessao__legenda__indisponivel"></div>
+            <p>Indisponível</p>
+          </div>
+        </section>
+        <section className="sessao__dados">
+          <form onSubmit={reservar} action="">
           <div className="sessao__comprador">
             <p>Nome do comprador:</p>
-            <input onChange={(event) => setComprador(event.target.value)} value={comprador} required type="text" />
+            <input placeholder="Digite seu nome" onChange={(event) => setComprador(event.target.value)} value={comprador} required type="text" />
           </div>
           <div className="sessao__cpf">
             <p>CPF do comprador:</p>
-            <input onChange={(event) => setCpf(event.target.value)} value={cpf} required type="text" />
+            <input placeholder="Digite seu CPF" onChange={(event) => setCpf(event.target.value)} value={cpf} required type="text" />
           </div>
           <div className="sessao__botao">
-            <button onClick={() => reservar()}>Reservar Acentos</button>
+            <button type="submit">Reservar Acentos</button>
           </div>
           </form>
         </section>
