@@ -13,16 +13,16 @@ function Sessao() {
 
   function reservar(event) {
     event.preventDefault();
-    const ids = selecionados.map((item) => item * 1);
+
     const promessa = axios.post(
       "https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many",
       {
-        ids: [...ids],
+        ids: selecionados,
         name: comprador,
         cpf: cpf,
       }
     );
-    promessa.then(resposta => console.log(resposta))
+    promessa.then((resposta) => console.log(resposta));
     //promessa.then((resposta) => navegacao("/sucesso", { info: informacoes }));
     promessa.catch((erro) => console.log(erro));
   }
@@ -44,25 +44,23 @@ function Sessao() {
   }, []);
 
   function selecao(numero) {
-    if (selecionados.includes(numero)){
-      const achouIndice = selecionados.findIndex(
-        (num) => num === numero
-    );
-    const auxiliar = [...selecionados];
+    if (selecionados.includes(numero)) {
+      const achouIndice = selecionados.findIndex((num) => num === numero);
+      const auxiliar = [...selecionados];
       auxiliar.splice(achouIndice, 1);
       setSelecionados(auxiliar);
-    }else{
+    } else {
       setSelecionados([...selecionados, numero]);
     }
 
-    // 
+    //
 
     // if (achouIndice !== -1) {
-      
+
     // }
   }
 
-  console.log("selecionados, ", selecionados)
+  console.log("selecionados, ", selecionados);
 
   return (
     <>
@@ -75,14 +73,14 @@ function Sessao() {
             <>
               {sessao.seats.map((num) => {
                 return num.isAvailable ? (
-                  
-                  <div key={num.id}
+                  <div
+                    key={num.id}
                     onClick={() => {
                       //css = `sessao__assentos__unidade${(selecionados.findIndex(num => `${num}` === `${num.name}`) !== -1) ? "-selecionada" : ""}`
                       selecionados.findIndex(
                         (num) => console.log(`${num}` === num.id) !== -1
                       );
-                  
+
                       selecao(num.id);
                     }}
                     className={"sessao__assentos__unidade"}
@@ -90,7 +88,8 @@ function Sessao() {
                     <p>{num.name}</p>
                   </div>
                 ) : (
-                  <div key={num.id}
+                  <div
+                    key={num.id}
                     onClick={() => alert("Esse assento não está disponível")}
                     className="sessao__assentos__unidade-ocupada"
                   >
@@ -118,7 +117,7 @@ function Sessao() {
           </div>
         </section>
         <section className="sessao__dados">
-          <form onSubmit={reservar} action="">
+          <form onSubmit={reservar} action="./Sucesso">
             <div className="sessao__comprador">
               <p>Nome do comprador:</p>
               <input
@@ -140,9 +139,10 @@ function Sessao() {
               />
             </div>
             <div className="sessao__botao">
-              <Link to={"/sucesso"}>
+              {/* <Link to={"/sucesso"}>
                 <button type="submit">Reservar Acentos</button>
-              </Link>
+              </Link> */}
+              <button type="submit">Reservar Acentos</button>
             </div>
           </form>
         </section>
