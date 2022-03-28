@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 function Sessao() {
   const params = useParams();
@@ -60,11 +60,8 @@ function Sessao() {
 
   }
 
-  console.log("selecionados, ", selecionados);
-  console.log('sessao', sessao)
-  console.log('sessao time', sessao.ids)
-
-  return (
+  console.log('selecionados ', selecionados)
+    return (
     <>
       <main className="sessao">
         <section className="sessao__titulo">
@@ -74,23 +71,31 @@ function Sessao() {
           {sessao.movie !== undefined ? (
             <>
               {sessao.seats.map((num) => {
-                return num.isAvailable ? (
+                
+                return num.isAvailable ? ( 
+                  
+                  selecionados.includes((num.id)) ? (
+                    <div
+                      key={num.id}
+                      onClick={() => {
+                        
+                        selecao(num.id);
+                      }}
+                      className={"sessao__assentos__unidade-selecionada"}
+                    >
+                      <p>{num.name}</p>
+                    </div>
+                  ):(
                   <div
                     key={num.id}
                     onClick={() => {
-                      //css = `sessao__assentos__unidade${(selecionados.findIndex(num => `${num}` === `${num.name}`) !== -1) ? "-selecionada" : ""}`
-                      selecionados.findIndex(
-                        (num) => console.log(`${num}` === num.id) !== -1
-                      );
 
                       selecao(num.id);
                     }}
-                    className={"sessao__assentos__unidade"}
-                  >
+                    className={"sessao__assentos__unidade"}>
                     <p>{num.name}</p>
                   </div>
-                ) : (
-                  <div
+                )) : (<div
                     key={num.id}
                     onClick={() => alert("Esse assento não está disponível")}
                     className="sessao__assentos__unidade-ocupada"

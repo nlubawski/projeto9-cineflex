@@ -27,21 +27,22 @@ function Filme() {
         <section className="filmes__sessoes">
           {days !== undefined ? (
             days.map((dia) => {
+              console.log('dia' , dia.id)
               return (
-                <>
-                  <p className="filmes__sessoes__texto">
+                <div key={dia.id}>
+                  <p  className="filmes__sessoes__texto">
                     {dia.weekday} - {dia.date}
                   </p>
                   <div className="filmes__sessoes-botoes">
                     {dia.showtimes.map((hora) => {
                       return (
-                        <Link to={`/sessao/${hora.id}`} key={dia.id}>
+                        <Link to={`/sessao/${hora.id}`} key={hora.id}>
                           <button>{hora.name}</button>
                         </Link>
                       );
                     })}
                   </div>
-                </>
+                </div>
               );
             })
           ) : (
