@@ -23,17 +23,19 @@ function Sessao() {
       }
     );
 
-    promessa.then(() => navegacao('/sucesso', {
-      state: {
+    promessa.then(() =>
+      navegacao("/sucesso", {
+        state: {
           ids: selecionados,
           assentos: sessao.seats,
           movie: sessao.movie.title,
           time: sessao.name,
           date: sessao.day.date,
           name: comprador,
-          cpf: cpf
-      }
-  }))
+          cpf: cpf,
+        },
+      })
+    );
     promessa.catch((erro) => console.log(erro));
   }
 
@@ -57,11 +59,9 @@ function Sessao() {
     } else {
       setSelecionados([...selecionados, numero]);
     }
-
   }
 
-  console.log('selecionados ', selecionados)
-    return (
+  return (
     <>
       <main className="sessao">
         <section className="sessao__titulo">
@@ -71,31 +71,30 @@ function Sessao() {
           {sessao.movie !== undefined ? (
             <>
               {sessao.seats.map((num) => {
-                
-                return num.isAvailable ? ( 
-                  
-                  selecionados.includes((num.id)) ? (
+                return num.isAvailable ? (
+                  selecionados.includes(num.id) ? (
                     <div
                       key={num.id}
                       onClick={() => {
-                        
                         selecao(num.id);
                       }}
                       className={"sessao__assentos__unidade-selecionada"}
                     >
                       <p>{num.name}</p>
                     </div>
-                  ):(
+                  ) : (
+                    <div
+                      key={num.id}
+                      onClick={() => {
+                        selecao(num.id);
+                      }}
+                      className={"sessao__assentos__unidade"}
+                    >
+                      <p>{num.name}</p>
+                    </div>
+                  )
+                ) : (
                   <div
-                    key={num.id}
-                    onClick={() => {
-
-                      selecao(num.id);
-                    }}
-                    className={"sessao__assentos__unidade"}>
-                    <p>{num.name}</p>
-                  </div>
-                )) : (<div
                     key={num.id}
                     onClick={() => alert("Esse assento não está disponível")}
                     className="sessao__assentos__unidade-ocupada"

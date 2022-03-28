@@ -27,10 +27,9 @@ function Filme() {
         <section className="filmes__sessoes">
           {days !== undefined ? (
             days.map((dia) => {
-              console.log('dia' , dia.id)
               return (
                 <div key={dia.id}>
-                  <p  className="filmes__sessoes__texto">
+                  <p className="filmes__sessoes__texto">
                     {dia.weekday} - {dia.date}
                   </p>
                   <div className="filmes__sessoes-botoes">

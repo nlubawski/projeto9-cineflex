@@ -1,10 +1,9 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 function Sucesso() {
   const { state } = useLocation();
   const listaAssentos = [];
   state.ids.forEach((id) => {
-   
     state.assentos.forEach((assento) => {
       if (id === assento.id) {
         listaAssentos.push(assento.name);
@@ -42,7 +41,9 @@ function Sucesso() {
           </div>
         </section>
         <div className="sucesso__botao">
-          <button>Voltar pra Home</button>
+          <Link to={"/"}>
+            <button>Voltar pra Home</button>
+          </Link>
         </div>
       </main>
     </>
