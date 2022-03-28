@@ -44,18 +44,25 @@ function Sessao() {
   }, []);
 
   function selecao(numero) {
-    const achouIndice = selecionados.findIndex(
-      (num) => num === numero.toString()
+    if (selecionados.includes(numero)){
+      const achouIndice = selecionados.findIndex(
+        (num) => num === numero
     );
-
-    if (achouIndice !== -1) {
-      const auxiliar = [...selecionados];
+    const auxiliar = [...selecionados];
       auxiliar.splice(achouIndice, 1);
       setSelecionados(auxiliar);
-    } else {
+    }else{
       setSelecionados([...selecionados, numero]);
     }
+
+    // 
+
+    // if (achouIndice !== -1) {
+      
+    // }
   }
+
+  console.log("selecionados, ", selecionados)
 
   return (
     <>
@@ -68,20 +75,22 @@ function Sessao() {
             <>
               {sessao.seats.map((num) => {
                 return num.isAvailable ? (
-                  <div
+                  
+                  <div key={num.id}
                     onClick={() => {
                       //css = `sessao__assentos__unidade${(selecionados.findIndex(num => `${num}` === `${num.name}`) !== -1) ? "-selecionada" : ""}`
                       selecionados.findIndex(
-                        (num) => console.log(`${num}` === num.name) !== -1
+                        (num) => console.log(`${num}` === num.id) !== -1
                       );
-                      selecao(num.name);
+                  
+                      selecao(num.id);
                     }}
                     className={"sessao__assentos__unidade"}
                   >
                     <p>{num.name}</p>
                   </div>
                 ) : (
-                  <div
+                  <div key={num.id}
                     onClick={() => alert("Esse assento não está disponível")}
                     className="sessao__assentos__unidade-ocupada"
                   >
