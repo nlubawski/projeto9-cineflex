@@ -18,39 +18,43 @@ function Filme() {
 
   const { title, posterURL, days } = filme;
 
-   return (
-      <>
-        <main className="filmes">
-          <section className="filmes__titulo">
-            <p>Selecione o horário</p>
-          </section>
-          <section className="filmes__sessoes">
-          
-          {//porque precisei validar assim, if é zoado e days nao consigo manipular sem condicional
-          //days !== undefined ? days.map(dia => console.log(dia)) : <></>
-          days !== undefined ? days.map(dia => 
-            { return (
-              <>
-                <p className="filmes__sessoes__texto">{dia.weekday} - {dia.date}</p>
-                <div className="filmes__sessoes-botoes">{dia.showtimes.map(hora => 
-                {  return (
-                  <Link to={`/sessao/${hora.id}`} key={dia.id}>
-                <button>{hora.name}</button>
-                </Link>)
-              })
-                }</div> 
-              </>)
-            }
-          ) : <></> }
-          </section>
-        </main>
-        <footer>
-          <img src={posterURL} alt={title} />
-          <p>{title}</p>
-        </footer>
-      </>
-    );
-  
+  return (
+    <>
+      <main className="filmes">
+        <section className="filmes__titulo">
+          <p>Selecione o horário</p>
+        </section>
+        <section className="filmes__sessoes">
+          {days !== undefined ? (
+            days.map((dia) => {
+              return (
+                <>
+                  <p className="filmes__sessoes__texto">
+                    {dia.weekday} - {dia.date}
+                  </p>
+                  <div className="filmes__sessoes-botoes">
+                    {dia.showtimes.map((hora) => {
+                      return (
+                        <Link to={`/sessao/${hora.id}`} key={dia.id}>
+                          <button>{hora.name}</button>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </>
+              );
+            })
+          ) : (
+            <></>
+          )}
+        </section>
+      </main>
+      <footer>
+        <img src={posterURL} alt={title} />
+        <p>{title}</p>
+      </footer>
+    </>
+  );
 }
 
 export default Filme;

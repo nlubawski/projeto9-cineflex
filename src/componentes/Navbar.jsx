@@ -1,9 +1,9 @@
-function Navbar(){
-    return(
-        <header>
-            <h1>CINEFLEX</h1>
-        </header>
-    )
+function Navbar() {
+  return (
+    <header>
+      <h1>CINEFLEX</h1>
+    </header>
+  );
 }
 
-export default Navbar
+export default Navbar;

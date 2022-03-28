@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Inicial() {
-  const params = useParams()
   const [filmes, setFilmes] = useState([]);
-  console.log(params)
 
   useEffect(() => {
     const requisicao = axios.get(
@@ -27,7 +25,7 @@ function Inicial() {
         <ul className="filmes__lista__itens">
           {filmes.map((filme) => (
             <Link to={`/filme/${filme.id}`} key={filme.id}>
-              <li >
+              <li>
                 <img src={filme.posterURL} alt={filme.title} />
               </li>
             </Link>
