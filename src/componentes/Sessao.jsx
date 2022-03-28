@@ -22,15 +22,20 @@ function Sessao() {
         cpf: cpf,
       }
     );
-    promessa.then((resposta) => console.log(resposta));
-    //promessa.then((resposta) => navegacao("/sucesso", { info: informacoes }));
+
+    promessa.then(() => navegacao('/sucesso', {
+      state: {
+          ids: selecionados,
+          assentos: sessao.seats,
+          movie: sessao.movie.title,
+          time: sessao.name,
+          date: sessao.day.date,
+          name: comprador,
+          cpf: cpf
+      }
+  }))
     promessa.catch((erro) => console.log(erro));
   }
-
-  // const informacoes = {
-  //   assentos: selecionados,
-  //   sessao: sessao,
-  // };
 
   useEffect(() => {
     const requisicao = axios.get(
@@ -53,14 +58,11 @@ function Sessao() {
       setSelecionados([...selecionados, numero]);
     }
 
-    //
-
-    // if (achouIndice !== -1) {
-
-    // }
   }
 
   console.log("selecionados, ", selecionados);
+  console.log('sessao', sessao)
+  console.log('sessao time', sessao.ids)
 
   return (
     <>
